@@ -4,7 +4,8 @@ const inputTitle = document.querySelector('#title');
 const inputCost = document.querySelector('#cost');
 const inputCurrency = document.querySelector('#currency');
 const expenses = new Expenses('USD');
-loadAPI();
+render();
+
 bAdd.addEventListener('click', e => {
     if (inputTitle.value != '' && inputCost.value != '' && !isNaN(parseFloat(inputCost.value))) {
         const title = inputTitle.value;
@@ -17,17 +18,7 @@ bAdd.addEventListener('click', e => {
         alert('Completa los datos correctamente');
     }
 });
-function loadAPI() {
-    fetch('api/api.json')
-        .then(res => res.json())
-        .then(json => {
-        const items = json.items;
-        items.forEach(item => {
-            expenses.add(item);
-        });
-        render();
-    });
-}
+
 function render() {
     let html = '';
     expenses.getItems().forEach(item => {

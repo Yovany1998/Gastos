@@ -6,6 +6,8 @@ const inputCurrency = <HTMLSelectElement>document.querySelector('#currency');
 
 const expenses   = new Expenses('USD');
 
+
+render();
 loadAPI();
 
 bAdd!.addEventListener('click', e =>{
